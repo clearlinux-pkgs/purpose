@@ -5,21 +5,21 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.50.0
-Release  : 3
-URL      : https://download.kde.org/stable/frameworks/5.50/purpose-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/purpose-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/purpose-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 4
+URL      : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: purpose-lib
-Requires: purpose-license
-Requires: purpose-data
-Requires: purpose-locales
+Requires: purpose-data = %{version}-%{release}
+Requires: purpose-lib = %{version}-%{release}
+Requires: purpose-license = %{version}-%{release}
+Requires: purpose-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 # Purpose
@@ -42,9 +42,9 @@ data components for the purpose package.
 %package dev
 Summary: dev components for the purpose package.
 Group: Development
-Requires: purpose-lib
-Requires: purpose-data
-Provides: purpose-devel
+Requires: purpose-lib = %{version}-%{release}
+Requires: purpose-data = %{version}-%{release}
+Provides: purpose-devel = %{version}-%{release}
 
 %description dev
 dev components for the purpose package.
@@ -53,8 +53,8 @@ dev components for the purpose package.
 %package lib
 Summary: lib components for the purpose package.
 Group: Libraries
-Requires: purpose-data
-Requires: purpose-license
+Requires: purpose-data = %{version}-%{release}
+Requires: purpose-license = %{version}-%{release}
 
 %description lib
 lib components for the purpose package.
@@ -77,25 +77,25 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.50.0
+%setup -q -n purpose-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536438109
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539642813
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536438109
+export SOURCE_DATE_EPOCH=1539642813
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/purpose
-cp COPYING.LIB %{buildroot}/usr/share/doc/purpose/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/purpose
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -111,8 +111,8 @@ popd
 %find_lang purpose_saveas
 %find_lang purpose_twitter
 %find_lang purpose_youtube
-%find_lang purpose_reviewboard
 %find_lang purpose-fileitemaction
+%find_lang purpose_reviewboard
 
 %files
 %defattr(-,root,root,-)
@@ -157,13 +157,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.50.0
+/usr/lib64/libKF5Purpose.so.5.51.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.50.0
+/usr/lib64/libKF5PurposeWidgets.so.5.51.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.50.0
+/usr/lib64/libPhabricatorHelpers.so.5.51.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.50.0
+/usr/lib64/libReviewboardHelpers.so.5.51.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
@@ -184,9 +184,9 @@ popd
 /usr/lib64/qt5/qml/org/kde/purpose/reviewboard/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/purpose/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/purpose/COPYING.LIB
 
-%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose_reviewboard.lang -f purpose-fileitemaction.lang
+%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose-fileitemaction.lang -f purpose_reviewboard.lang
 %defattr(-,root,root,-)
 
