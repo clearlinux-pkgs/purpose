@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.51.0
-Release  : 4
-URL      : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.51/purpose-5.51.0.tar.xz.sig
+Version  : 5.52.0
+Release  : 5
+URL      : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -30,6 +30,14 @@ on any application without having to implement them specifically. Purpose will
 offer them mechanisms to list the different alternatives to execute given the
 requested action type and will facilitate components so that all the plugins
 can receive all the information they need.
+
+%package abi
+Summary: abi components for the purpose package.
+Group: Default
+
+%description abi
+abi components for the purpose package.
+
 
 %package data
 Summary: data components for the purpose package.
@@ -77,14 +85,14 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.51.0
+%setup -q -n purpose-5.52.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539642813
+export SOURCE_DATE_EPOCH=1541880279
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -92,7 +100,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539642813
+export SOURCE_DATE_EPOCH=1541880279
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/COPYING.LIB
@@ -111,12 +119,19 @@ popd
 %find_lang purpose_saveas
 %find_lang purpose_twitter
 %find_lang purpose_youtube
-%find_lang purpose-fileitemaction
 %find_lang purpose_reviewboard
+%find_lang purpose-fileitemaction
 
 %files
 %defattr(-,root,root,-)
 /usr/lib64/libexec/kf5/purposeprocess
+
+%files abi
+%defattr(-,root,root,-)
+/usr/share/abi/libKF5Purpose.so.5.52.0.abi
+/usr/share/abi/libKF5PurposeWidgets.so.5.52.0.abi
+/usr/share/abi/libPhabricatorHelpers.so.5.52.0.abi
+/usr/share/abi/libReviewboardHelpers.so.5.52.0.abi
 
 %files data
 %defattr(-,root,root,-)
@@ -157,13 +172,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.51.0
+/usr/lib64/libKF5Purpose.so.5.52.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.51.0
+/usr/lib64/libKF5PurposeWidgets.so.5.52.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.51.0
+/usr/lib64/libPhabricatorHelpers.so.5.52.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.51.0
+/usr/lib64/libReviewboardHelpers.so.5.52.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
@@ -187,6 +202,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/purpose/COPYING.LIB
 
-%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose-fileitemaction.lang -f purpose_reviewboard.lang
+%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose_reviewboard.lang -f purpose-fileitemaction.lang
 %defattr(-,root,root,-)
 
