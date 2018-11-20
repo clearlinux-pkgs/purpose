@@ -6,7 +6,7 @@
 #
 Name     : purpose
 Version  : 5.52.0
-Release  : 5
+Release  : 6
 URL      : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz.sig
@@ -30,14 +30,6 @@ on any application without having to implement them specifically. Purpose will
 offer them mechanisms to list the different alternatives to execute given the
 requested action type and will facilitate components so that all the plugins
 can receive all the information they need.
-
-%package abi
-Summary: abi components for the purpose package.
-Group: Default
-
-%description abi
-abi components for the purpose package.
-
 
 %package data
 Summary: data components for the purpose package.
@@ -92,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541880279
+export SOURCE_DATE_EPOCH=1542752729
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -100,7 +92,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541880279
+export SOURCE_DATE_EPOCH=1542752729
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/COPYING.LIB
@@ -125,13 +117,6 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib64/libexec/kf5/purposeprocess
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libKF5Purpose.so.5.52.0.abi
-/usr/share/abi/libKF5PurposeWidgets.so.5.52.0.abi
-/usr/share/abi/libPhabricatorHelpers.so.5.52.0.abi
-/usr/share/abi/libReviewboardHelpers.so.5.52.0.abi
 
 %files data
 %defattr(-,root,root,-)
