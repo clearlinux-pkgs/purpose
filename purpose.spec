@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.52.0
-Release  : 6
-URL      : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.52/purpose-5.52.0.tar.xz.sig
+Version  : 5.53.0
+Release  : 7
+URL      : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -77,22 +77,22 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.52.0
+%setup -q -n purpose-5.53.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542752729
+export SOURCE_DATE_EPOCH=1544545181
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542752729
+export SOURCE_DATE_EPOCH=1544545181
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/COPYING.LIB
@@ -157,13 +157,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.52.0
+/usr/lib64/libKF5Purpose.so.5.53.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.52.0
+/usr/lib64/libKF5PurposeWidgets.so.5.53.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.52.0
+/usr/lib64/libPhabricatorHelpers.so.5.53.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.52.0
+/usr/lib64/libReviewboardHelpers.so.5.53.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
