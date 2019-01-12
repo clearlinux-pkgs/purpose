@@ -6,7 +6,7 @@
 #
 Name     : purpose
 Version  : 5.53.0
-Release  : 7
+Release  : 8
 URL      : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.53/purpose-5.53.0.tar.xz.sig
