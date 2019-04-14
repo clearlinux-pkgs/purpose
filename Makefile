@@ -1,5 +1,5 @@
 PKG_NAME := purpose
-URL = https://download.kde.org/stable/frameworks/5.56/purpose-5.56.0.tar.xz
+URL = https://download.kde.org/stable/frameworks/5.57/purpose-5.57.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
