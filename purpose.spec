@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.59.0
-Release  : 16
-URL      : https://download.kde.org/stable/frameworks/5.59/purpose-5.59.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.59/purpose-5.59.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.59/purpose-5.59.0.tar.xz.sig
+Version  : 5.60.0
+Release  : 17
+URL      : https://download.kde.org/stable/frameworks/5.60/purpose-5.60.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.60/purpose-5.60.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.60/purpose-5.60.0.tar.xz.sig
 Summary  : Framework for providing abstractions to get the developer's purposes fulfilled
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -19,6 +19,8 @@ Requires: purpose-license = %{version}-%{release}
 Requires: purpose-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : ki18n-dev
+BuildRequires : kirigami2-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -79,16 +81,17 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.59.0
+%setup -q -n purpose-5.60.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560037473
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1563076678
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -97,11 +100,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1560037473
+export SOURCE_DATE_EPOCH=1563076678
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/COPYING.LIB
@@ -120,9 +123,9 @@ popd
 %find_lang purpose_saveas
 %find_lang purpose_twitter
 %find_lang purpose_youtube
+%find_lang purpose_kdeconnectsms
 %find_lang purpose_reviewboard
 %find_lang purpose-fileitemaction
-%find_lang purpose_kdeconnectsms
 
 %files
 %defattr(-,root,root,-)
@@ -139,7 +142,7 @@ popd
 /usr/share/purpose/phabricatorplugin_config.qml
 /usr/share/purpose/reviewboardplugin_config.qml
 /usr/share/purpose/saveasplugin_config.qml
-/usr/share/xdg/purpose.categories
+/usr/share/qlogging-categories5/purpose.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -167,13 +170,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.59.0
+/usr/lib64/libKF5Purpose.so.5.60.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.59.0
+/usr/lib64/libKF5PurposeWidgets.so.5.60.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.59.0
+/usr/lib64/libPhabricatorHelpers.so.5.60.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.59.0
+/usr/lib64/libReviewboardHelpers.so.5.60.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
@@ -198,6 +201,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/purpose/COPYING.LIB
 
-%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose_reviewboard.lang -f purpose-fileitemaction.lang -f purpose_kdeconnectsms.lang
+%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_twitter.lang -f purpose_youtube.lang -f purpose_kdeconnectsms.lang -f purpose_reviewboard.lang -f purpose-fileitemaction.lang
 %defattr(-,root,root,-)
 
