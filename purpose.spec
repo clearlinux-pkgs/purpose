@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.70.0
-Release  : 27
-URL      : https://download.kde.org/stable/frameworks/5.70/purpose-5.70.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.70/purpose-5.70.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.70/purpose-5.70.0.tar.xz.sig
+Version  : 5.71.0
+Release  : 28
+URL      : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz.sig
 Summary  : Framework for providing abstractions to get the developer's purposes fulfilled
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -82,15 +82,15 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.70.0
-cd %{_builddir}/purpose-5.70.0
+%setup -q -n purpose-5.71.0
+cd %{_builddir}/purpose-5.71.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589234606
+export SOURCE_DATE_EPOCH=1592259967
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -106,10 +106,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1589234606
+export SOURCE_DATE_EPOCH=1592259967
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
-cp %{_builddir}/purpose-5.70.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/purpose-5.71.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
@@ -125,9 +125,9 @@ popd
 %find_lang purpose_saveas
 %find_lang purpose_youtube
 %find_lang purpose_kdeconnectsms
-%find_lang purpose_reviewboard
 %find_lang purpose-fileitemaction
 %find_lang purpose_bluetooth
+%find_lang purpose_reviewboard
 
 %files
 %defattr(-,root,root,-)
@@ -172,13 +172,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.70.0
+/usr/lib64/libKF5Purpose.so.5.71.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.70.0
+/usr/lib64/libKF5PurposeWidgets.so.5.71.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.70.0
+/usr/lib64/libPhabricatorHelpers.so.5.71.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.70.0
+/usr/lib64/libReviewboardHelpers.so.5.71.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
@@ -203,6 +203,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/purpose/01a6b4bf79aca9b556822601186afab86e8c4fbf
 
-%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_youtube.lang -f purpose_kdeconnectsms.lang -f purpose_reviewboard.lang -f purpose-fileitemaction.lang -f purpose_bluetooth.lang
+%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_youtube.lang -f purpose_kdeconnectsms.lang -f purpose-fileitemaction.lang -f purpose_bluetooth.lang -f purpose_reviewboard.lang
 %defattr(-,root,root,-)
 
