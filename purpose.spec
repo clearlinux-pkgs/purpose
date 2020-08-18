@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.71.0
-Release  : 28
-URL      : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.71/purpose-5.71.0.tar.xz.sig
+Version  : 5.73.0
+Release  : 29
+URL      : https://download.kde.org/stable/frameworks/5.73/purpose-5.73.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.73/purpose-5.73.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.73/purpose-5.73.0.tar.xz.sig
 Summary  : Framework for providing abstractions to get the developer's purposes fulfilled
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -82,15 +82,15 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.71.0
-cd %{_builddir}/purpose-5.71.0
+%setup -q -n purpose-5.73.0
+cd %{_builddir}/purpose-5.73.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592259967
+export SOURCE_DATE_EPOCH=1597713454
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,14 +102,14 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592259967
+export SOURCE_DATE_EPOCH=1597713454
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
-cp %{_builddir}/purpose-5.71.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/purpose-5.73.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/purpose/01a6b4bf79aca9b556822601186afab86e8c4fbf
 pushd clr-build
 %make_install
 popd
@@ -145,6 +145,7 @@ popd
 /usr/share/purpose/reviewboardplugin_config.qml
 /usr/share/purpose/saveasplugin_config.qml
 /usr/share/qlogging-categories5/purpose.categories
+/usr/share/qlogging-categories5/purpose.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
@@ -172,13 +173,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.71.0
+/usr/lib64/libKF5Purpose.so.5.73.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.71.0
+/usr/lib64/libKF5PurposeWidgets.so.5.73.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.71.0
+/usr/lib64/libPhabricatorHelpers.so.5.73.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.71.0
+/usr/lib64/libReviewboardHelpers.so.5.73.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
