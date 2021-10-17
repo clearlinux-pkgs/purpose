@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.85.0
-Release  : 38
-URL      : https://download.kde.org/stable/frameworks/5.85/purpose-5.85.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.85/purpose-5.85.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.85/purpose-5.85.0.tar.xz.sig
+Version  : 5.87.0
+Release  : 39
+URL      : https://download.kde.org/stable/frameworks/5.87/purpose-5.87.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.87/purpose-5.87.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.87/purpose-5.87.0.tar.xz.sig
 Summary  : Framework for providing abstractions to get the developer's purposes fulfilled
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -20,7 +20,12 @@ Requires: purpose-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
+BuildRequires : kconfig-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : ki18n-dev
+BuildRequires : kio-dev
 BuildRequires : kirigami2-dev
+BuildRequires : knotifications-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -80,15 +85,15 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.85.0
-cd %{_builddir}/purpose-5.85.0
+%setup -q -n purpose-5.87.0
+cd %{_builddir}/purpose-5.87.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1630903673
+export SOURCE_DATE_EPOCH=1634486123
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -104,12 +109,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1630903673
+export SOURCE_DATE_EPOCH=1634486123
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
-cp %{_builddir}/purpose-5.85.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/purpose-5.85.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/purpose-5.85.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/purpose-5.87.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/purpose-5.87.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/purpose-5.87.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/purpose/6f1f675aa5f6a2bbaa573b8343044b166be28399
 pushd clr-build
 %make_install
 popd
@@ -126,6 +131,7 @@ popd
 %find_lang purpose_youtube
 %find_lang purpose_kdeconnectsms
 %find_lang purpose-fileitemaction
+%find_lang purpose_barcode
 %find_lang purpose_bluetooth
 %find_lang purpose_reviewboard
 
@@ -139,6 +145,7 @@ popd
 /usr/share/icons/hicolor/128x128/apps/reviewboard-purpose.png
 /usr/share/icons/hicolor/16x16/apps/phabricator-purpose.png
 /usr/share/icons/hicolor/16x16/apps/reviewboard-purpose.png
+/usr/share/purpose/barcodeplugin_config.qml
 /usr/share/purpose/bluetoothplugin_config.qml
 /usr/share/purpose/kdeconnectplugin_config.qml
 /usr/share/purpose/phabricatorplugin_config.qml
@@ -173,14 +180,15 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.85.0
+/usr/lib64/libKF5Purpose.so.5.87.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.85.0
+/usr/lib64/libKF5PurposeWidgets.so.5.87.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.85.0
+/usr/lib64/libPhabricatorHelpers.so.5.87.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.85.0
+/usr/lib64/libReviewboardHelpers.so.5.87.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
+/usr/lib64/qt5/plugins/kf5/purpose/barcodeplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/emailplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/imgurplugin.so
@@ -206,6 +214,6 @@ popd
 /usr/share/package-licenses/purpose/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/purpose/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
-%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_youtube.lang -f purpose_kdeconnectsms.lang -f purpose-fileitemaction.lang -f purpose_bluetooth.lang -f purpose_reviewboard.lang
+%files locales -f libpurpose_quick.lang -f libpurpose_widgets.lang -f purpose_email.lang -f purpose_imgur.lang -f purpose_kdeconnect.lang -f purpose_ktp-sendfile.lang -f purpose_nextcloud.lang -f purpose_pastebin.lang -f purpose_phabricator.lang -f purpose_saveas.lang -f purpose_youtube.lang -f purpose_kdeconnectsms.lang -f purpose-fileitemaction.lang -f purpose_barcode.lang -f purpose_bluetooth.lang -f purpose_reviewboard.lang
 %defattr(-,root,root,-)
 
