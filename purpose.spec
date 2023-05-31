@@ -7,7 +7,7 @@
 #
 Name     : purpose
 Version  : 5.106.0
-Release  : 60
+Release  : 61
 URL      : https://download.kde.org/stable/frameworks/5.106/purpose-5.106.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.106/purpose-5.106.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.106/purpose-5.106.0.tar.xz.sig
@@ -92,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684878779
+export SOURCE_DATE_EPOCH=1685562999
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -125,7 +125,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684878779
+export SOURCE_DATE_EPOCH=1685562999
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp %{_builddir}/purpose-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/purpose/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
@@ -177,8 +177,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Purpose.so
-/V3/usr/lib64/libKF5PurposeWidgets.so
 /usr/include/KF5/purpose/Purpose/AlternativesModel
 /usr/include/KF5/purpose/Purpose/Configuration
 /usr/include/KF5/purpose/Purpose/Job
@@ -204,13 +202,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Purpose.so.5
 /V3/usr/lib64/libKF5Purpose.so.5.106.0
-/V3/usr/lib64/libKF5PurposeWidgets.so.5
 /V3/usr/lib64/libKF5PurposeWidgets.so.5.106.0
-/V3/usr/lib64/libPhabricatorHelpers.so.5
 /V3/usr/lib64/libPhabricatorHelpers.so.5.106.0
-/V3/usr/lib64/libReviewboardHelpers.so.5
 /V3/usr/lib64/libReviewboardHelpers.so.5.106.0
 /V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /V3/usr/lib64/qt5/plugins/kf5/purpose/barcodeplugin.so
