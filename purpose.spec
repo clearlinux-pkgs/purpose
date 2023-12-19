@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : purpose
-Version  : 5.112.0
-Release  : 68
-URL      : https://download.kde.org/stable/frameworks/5.112/purpose-5.112.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.112/purpose-5.112.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.112/purpose-5.112.0.tar.xz.sig
+Version  : 5.113.0
+Release  : 69
+URL      : https://download.kde.org/stable/frameworks/5.113/purpose-5.113.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.113/purpose-5.113.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.113/purpose-5.113.0.tar.xz.sig
 Summary  : Framework for providing abstractions to get the developer's purposes fulfilled
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -86,15 +86,15 @@ locales components for the purpose package.
 
 
 %prep
-%setup -q -n purpose-5.112.0
-cd %{_builddir}/purpose-5.112.0
+%setup -q -n purpose-5.113.0
+cd %{_builddir}/purpose-5.113.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1702062548
+export SOURCE_DATE_EPOCH=1703016933
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -153,7 +153,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1702062548
+export SOURCE_DATE_EPOCH=1703016933
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/purpose
 cp %{_builddir}/purpose-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/purpose/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
@@ -230,10 +230,10 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Purpose.so.5.112.0
-/V3/usr/lib64/libKF5PurposeWidgets.so.5.112.0
-/V3/usr/lib64/libPhabricatorHelpers.so.5.112.0
-/V3/usr/lib64/libReviewboardHelpers.so.5.112.0
+/V3/usr/lib64/libKF5Purpose.so.5.113.0
+/V3/usr/lib64/libKF5PurposeWidgets.so.5.113.0
+/V3/usr/lib64/libPhabricatorHelpers.so.5.113.0
+/V3/usr/lib64/libReviewboardHelpers.so.5.113.0
 /V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /V3/usr/lib64/qt5/plugins/kf5/purpose/barcodeplugin.so
 /V3/usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
@@ -252,13 +252,13 @@ popd
 /V3/usr/lib64/qt5/qml/org/kde/purpose/phabricator/libphabricatorquickplugin.so
 /V3/usr/lib64/qt5/qml/org/kde/purpose/reviewboard/librbpurposequickplugin.so
 /usr/lib64/libKF5Purpose.so.5
-/usr/lib64/libKF5Purpose.so.5.112.0
+/usr/lib64/libKF5Purpose.so.5.113.0
 /usr/lib64/libKF5PurposeWidgets.so.5
-/usr/lib64/libKF5PurposeWidgets.so.5.112.0
+/usr/lib64/libKF5PurposeWidgets.so.5.113.0
 /usr/lib64/libPhabricatorHelpers.so.5
-/usr/lib64/libPhabricatorHelpers.so.5.112.0
+/usr/lib64/libPhabricatorHelpers.so.5.113.0
 /usr/lib64/libReviewboardHelpers.so.5
-/usr/lib64/libReviewboardHelpers.so.5.112.0
+/usr/lib64/libReviewboardHelpers.so.5.113.0
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/sharefileitemaction.so
 /usr/lib64/qt5/plugins/kf5/purpose/barcodeplugin.so
 /usr/lib64/qt5/plugins/kf5/purpose/bluetoothplugin.so
