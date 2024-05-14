@@ -81,6 +81,7 @@ libKF6Purpose.so.6:_ZNK7Purpose3Job4dataEv
 libKF6Purpose.so.6:_ZNK7Purpose3Job6outputEv
 libKF6PurposeWidgets.so.6:_ZN7Purpose4Menu11qt_metacallEN11QMetaObject4CallEiPPv
 libKF6PurposeWidgets.so.6:_ZN7Purpose4Menu11qt_metacastEPKc
+libKF6PurposeWidgets.so.6:_ZN7Purpose4Menu12aboutToShareEv
 libKF6PurposeWidgets.so.6:_ZN7Purpose4Menu6reloadEv
 libKF6PurposeWidgets.so.6:_ZN7Purpose4Menu8finishedERK11QJsonObjectiRK7QString
 libKF6PurposeWidgets.so.6:_ZN7Purpose4MenuC1EP7QWidget
